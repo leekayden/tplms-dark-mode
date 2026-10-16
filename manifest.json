@@ -1,0 +1,34 @@
+{
+  "manifest_version": 2,
+  "name": "TP LMS Dark Mode",
+  "version": "1.0.0",
+  "description": "Dark mode for tplms.polite.edu.sg (D2L Brightspace). Toggle from the toolbar.",
+  "content_scripts": [
+    {
+      "matches": ["*://tplms.polite.edu.sg/*", "*://s.brightspace.com/*"],
+      "js": ["content.js"],
+      "css": ["dark.css"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "permissions": ["storage"],
+  "browser_action": {
+    "default_title": "TP LMS Dark Mode",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/icon48.png",
+      "96": "icons/icon96.png"
+    }
+  },
+  "icons": {
+    "48": "icons/icon48.png",
+    "96": "icons/icon96.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tplms-dark-mode@tplms.local",
+      "strict_min_version": "101.0"
+    }
+  }
+}

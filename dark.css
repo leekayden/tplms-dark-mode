@@ -1,0 +1,191 @@
+/*
+ * TP LMS Dark Mode — dark.css
+ *
+ * Two layers:
+ *   1. Overrides of D2L Brightspace's --d2l-color-* design tokens.
+ *      The d2l-* web components (shadow DOM) consume these custom
+ *      properties, so overriding them on the root recolors everything.
+ *   2. Light-DOM overrides for the page shell (navbar, tiles, boxes...)
+ *      and generic content pages (including widget iframes).
+ *
+ * Everything is scoped under `html.tplms-dark` so the toggle in the
+ * toolbar can turn dark mode on/off instantly without a reload.
+ */
+
+/* ============================================================
+ * 1. Design token overrides
+ * ============================================================ */
+
+html.tplms-dark {
+  color-scheme: dark;
+
+  /* Neutrals */
+  --d2l-color-regolith: #1b1e22;   /* page background (near-white) */
+  --d2l-color-gypsum: #24272c;     /* alt background */
+  --d2l-color-sylvite: #282c32;    /* tertiary background */
+  --d2l-color-mica: #434a52;       /* strong border */
+  --d2l-color-corundum: #4a525a;   /* border */
+  --d2l-color-chromite: #767f89;   /* disabled text */
+  --d2l-color-galena: #98a1ab;     /* tertiary text */
+  --d2l-color-tungsten: #b7bfc8;   /* secondary text */
+  --d2l-color-ferrite: #e3e7eb;    /* primary text */
+
+  /* Celestine — primary action blue */
+  --d2l-color-celestine: #3d9be8;
+  --d2l-color-celestine-plus-1: #66b3f0;
+  --d2l-color-celestine-plus-2: #16334c;
+  --d2l-color-celestine-minus-1: #7fc4f7;
+  --d2l-color-celestine-minus-2: #a3d5f9;
+  --d2l-color-primary-accent-action: #3d9be8;
+  --d2l-color-feedback-action: #3d9be8;
+
+  /* Carnelian — orange */
+  --d2l-color-carnelian: #f0913c;
+  --d2l-color-carnelian-plus-1: #3a2c1a;
+  --d2l-color-carnelian-minus-1: #f5aa61;
+  --d2l-color-carnelian-minus-2: #fac98f;
+  --d2l-color-primary-accent-indicator: #f0913c;
+
+  /* Cinnabar — red */
+  --d2l-color-cinnabar: #e25457;
+  --d2l-color-cinnabar-plus-1: #f07b7e;
+  --d2l-color-cinnabar-plus-2: #461f20;
+  --d2l-color-cinnabar-minus-1: #f28b8d;
+  --d2l-color-feedback-error: #e25457;
+
+  /* Citrine — yellow */
+  --d2l-color-citrine: #ffba59;
+  --d2l-color-citrine-plus-1: #3d3620;
+  --d2l-color-citrine-minus-1: #ffcf85;
+  --d2l-color-citrine-minus-2: #ffe3ae;
+
+  /* Fluorite — purple */
+  --d2l-color-fluorite: #b653dd;
+  --d2l-color-fluorite-plus-1: #c07ce4;
+  --d2l-color-fluorite-plus-2: #2e1b38;
+  --d2l-color-fluorite-minus-1: #cf94ec;
+
+  /* Amethyst — indigo */
+  --d2l-color-amethyst: #8066ff;
+  --d2l-color-amethyst-plus-1: #9b95ff;
+  --d2l-color-amethyst-plus-2: #23203d;
+  --d2l-color-amethyst-minus-1: #a89cff;
+
+  /* Malachite — teal */
+  --d2l-color-malachite: #2de2c0;
+  --d2l-color-malachite-plus-1: #12362e;
+  --d2l-color-malachite-minus-1: #4fe6cb;
+  --d2l-color-malachite-minus-2: #8ff2e0;
+
+  /* Olivine — green */
+  --d2l-color-olivine: #58c474;
+  --d2l-color-olivine-plus-1: #1d3a1f;
+  --d2l-color-olivine-minus-1: #7fd694;
+  --d2l-color-olivine-minus-2: #a9e8b6;
+  --d2l-color-feedback-success: #58c474;
+
+  /* Peridot — lime */
+  --d2l-color-peridot: #8ad934;
+  --d2l-color-peridot-plus-1: #2b3a16;
+  --d2l-color-peridot-minus-1: #a8e35f;
+  --d2l-color-peridot-minus-2: #c6ef92;
+
+  /* Zircon — cyan */
+  --d2l-color-zircon: #1fb3d1;
+  --d2l-color-zircon-plus-1: #3fd4e8;
+  --d2l-color-zircon-plus-2: #0f3843;
+  --d2l-color-zircon-minus-1: #5ecfe0;
+
+  /* Tourmaline — pink */
+  --d2l-color-tourmaline: #e84d95;
+  --d2l-color-tourmaline-plus-1: #f56eae;
+  --d2l-color-tourmaline-plus-2: #401a2c;
+  --d2l-color-tourmaline-minus-1: #f893bd;
+
+  --d2l-color-feedback-warning: #f0913c;
+}
+
+/* ============================================================
+ * 2. Light-DOM overrides
+ * ============================================================ */
+
+/* Page shell */
+html.tplms-dark,
+html.tplms-dark body {
+  background-color: #1b1e22 !important;
+  color: #e3e7eb !important;
+}
+
+/* Top navigation bar (white -> dark, keep brand strip) */
+html.tplms-dark nav.d2l-navigation-s,
+html.tplms-dark .d2l-navigation-s-main,
+html.tplms-dark .d2l-navigation-s-centerer,
+html.tplms-dark .d2l-navigation-s-gutters,
+html.tplms-dark .d2l-navigation-s-header-main,
+html.tplms-dark .d2l-navigation-s-header-container {
+  background-color: #24272c !important;
+}
+
+html.tplms-dark .d2l-navigation-s-mobile-menu-content {
+  background-color: #24272c !important;
+  color: #e3e7eb !important;
+}
+
+/* Homepage widgets / tiles */
+html.tplms-dark .d2l-widget,
+html.tplms-dark .d2l-tile,
+html.tplms-dark .d2l-box,
+html.tplms-dark .d2l-box-h,
+html.tplms-dark .d2l-box-l,
+html.tplms-dark .d2l-box-r,
+html.tplms-dark .d2l-course-banner,
+html.tplms-dark .d2l-page-message,
+html.tplms-dark .d2l-floating-container,
+html.tplms-dark .d2l-pt-browser-heading-container {
+  background-color: #24272c !important;
+  color: #e3e7eb !important;
+}
+
+html.tplms-dark .d2l-widget {
+  border-color: #434a52 !important;
+  box-shadow: none !important;
+}
+
+/* d2l-card (course tiles) hardcodes :host { background-color: #fff };
+   document-level rules beat :host rules in the cascade */
+html.tplms-dark d2l-card {
+  background-color: #24272c !important;
+  border-color: #434a52 !important;
+}
+
+/* Headings inside widgets and browser panes */
+html.tplms-dark h1, html.tplms-dark h2, html.tplms-dark h3,
+html.tplms-dark h4, html.tplms-dark h5, html.tplms-dark h6,
+html.tplms-dark .d2l-heading,
+html.tplms-dark .d2l-textblock {
+  color: #e3e7eb;
+}
+
+html.tplms-dark .d2l-pt-browser-heading-container h2,
+html.tplms-dark .d2l-widget-header h2 {
+  color: #e3e7eb !important;
+}
+
+/* Generic content pages (incl. d2l_body_type=3 widget iframes) */
+html.tplms-dark table,
+html.tplms-dark th,
+html.tplms-dark td {
+  border-color: #434a52;
+}
+
+html.tplms-dark a {
+  color: #66b3f0;
+}
+
+/* Keep photos/illustrations untouched */
+html.tplms-dark img,
+html.tplms-dark video,
+html.tplms-dark iframe:not([id^="d2l_"]),
+html.tplms-dark svg image {
+  filter: none !important;
+}
